@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "875330819092",
+    "firebase_url": "https://fatlessauth.firebaseio.com",
+    "project_id": "fatlessauth",
+    "storage_bucket": "fatlessauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875330819092:android:57376325680cbee6",
+        "android_client_info": {
+          "package_name": "com.fatless.fatless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875330819092-ja23gm5v8g6up1rem69chjsu30j1lhrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAkFwXBnBdzU65Nx0FDRaHtzW1v2T9ecQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
