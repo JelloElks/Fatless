@@ -4,10 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -16,21 +21,24 @@ import butterknife.ButterKnife;
 
 public class CreateUserActivity extends AppCompatActivity {
 
-    private
+    private static final String TAG = CreateUserActivity.class.getName();
+
+
     @BindView(R2.id.editTextEmail)
     EditText editTextEmail;
-    private
+
     @BindView(R2.id.editTextPassword)
     EditText editTextPassword;
-    private
+
     @BindView(R2.id.buttonRegister)
     Button buttonRegister;
-    private
+
     @BindView(R2.id.textViewSignin)
     TextView textViewSignin;
+
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = CreateUserActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,30 @@ public class CreateUserActivity extends AppCompatActivity {
                 }
             }
         };
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "Starting method");
+                regUser();
+                Log.d(TAG, "User created");
+            }
+        });
+
+    }
+
+    private void regUser() {
+        mAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(CreateUserActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
     }
 
     @Override
