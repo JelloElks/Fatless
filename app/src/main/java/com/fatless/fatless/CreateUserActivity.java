@@ -3,7 +3,9 @@ package com.fatless.fatless;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,9 +70,12 @@ public class CreateUserActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "Starting method");
-                regUser();
-                Log.d(TAG, "User created");
+                if (editTextPassword.getText().toString().length() < 6 && isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
+                    regUser();
+                } else {
+                    Toast.makeText(CreateUserActivity.this, "Password must contain special char", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -86,6 +94,26 @@ public class CreateUserActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    /*
+    Kolla om passwordet är tillåtet stor bokstav osv?
+    kanske nå regex?
+    ändra på regex till password inga special tecken kolla vidare.
+     */
+    private boolean isValidEmail(CharSequence mail) {
+
+        return !TextUtils.isEmpty(mail) && Patterns.EMAIL_ADDRESS.matcher(mail).matches();
+    }
+
+    private boolean isValidPassword(String password) {
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
     }
 
     @Override
