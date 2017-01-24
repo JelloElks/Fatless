@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Facebook stuff
         FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        AppEventsLogger.activateApp(getApplication());
 
     }
 
