@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_create_user"
     android:layout_width="match_parent"
@@ -16,7 +17,8 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <EditText
             android:layout_margin="15dp"
@@ -39,13 +41,13 @@
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonRegister"
-            android:text="Register"
+            android:text="Registerera"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <TextView
             android:textAlignment="center"
-            android:text="Already registerd? Sign in here"
+            android:text="Already registerd? sign in here!"
             android:id="@+id/textViewSignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

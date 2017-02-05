@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.fatless.fatless.RegisterTest">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/imageView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            app:srcCompat="@color/FatLess_backgroundColor"
+            android:layout_height="170dp" />
+
+    <EditText
+        android:background="@drawable/TextViewShape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editText2"
+        android:textAlignment="center"
+        android:hint="Lösen"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
+
+    <EditText
+        android:background="@drawable/TextViewShape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:textAlignment="center"
+        android:hint="Epost"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Fat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView"
+        android:textSize="86sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal|bold"
+        android:textColor="@color/TextColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:text="Less"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginTop="39dp"
+        android:textAllCaps="false"
+        android:textColor="@color/TextColor"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="64sp"
+        android:textStyle="normal|italic"
+        android:fontFamily="serif-monospace" />
+
+    <Button
+        android:background="@drawable/ButtonShape"
+        android:textColor="#fff"
+        android:text="logga in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:id="@+id/login"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:layout_below="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+    <TextView
+        android:text="Eller logga in med facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:layout_above="@+id/facebook_login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="9dp" />
+
+    <TextView
+        android:text="Inget konto?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_above="@+id/Register"
+        android:layout_centerHorizontal="true" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:elevation="0dp"
+        android:textAllCaps="false"
+        android:layout_marginBottom="33dp"
+        android:layout_above="@+id/textView4"
+        android:layout_alignStart="@+id/login" />
+
+    <Button
+        android:background="@drawable/ButtonShape"
+        android:textColor="#fff"
+        android:text="Registrera dig här"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Register"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/facebook_login_button" />
+
+</RelativeLayout>
