@@ -70,10 +70,10 @@ public class CreateUserActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editTextPassword.getText().toString().length() < 6 && isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
+                if (isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
                     regUser();
                 } else {
-                    Toast.makeText(CreateUserActivity.this, "Password must contain special char", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateUserActivity.this, "Password must contain special char uppercase lowercase and number", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -109,7 +109,7 @@ public class CreateUserActivity extends AppCompatActivity {
     private boolean isValidPassword(String password) {
         Pattern pattern;
         Matcher matcher;
-        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        final String PASSWORD_PATTERN = "((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{6,20})";
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);
 
