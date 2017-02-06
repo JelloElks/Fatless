@@ -17,7 +17,7 @@
             android:layout_height="170dp" />
 
     <EditText
-        android:background="@drawable/textViewShape"
+        android:background="@drawable/text_view_shape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -30,7 +30,7 @@
         android:layout_alignStart="@+id/editText" />
 
     <EditText
-        android:background="@drawable/textViewShape"
+        android:background="@drawable/text_view_shape"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
@@ -72,7 +72,7 @@
         android:fontFamily="serif-monospace" />
 
     <Button
-        android:background="@drawable/buttonShape"
+        android:background="@drawable/button_shape"
         android:textColor="#fff"
         android:text="logga in"
         android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
         android:layout_alignStart="@+id/login" />
 
     <Button
-        android:background="@drawable/buttonShape"
+        android:background="@drawable/button_shape"
         android:textColor="#fff"
         android:text="Registrera dig här"
         android:layout_width="wrap_content"
