@@ -73,7 +73,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 if (isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
                     regUser();
                 } else {
-                    Toast.makeText(CreateUserActivity.this, "Password must contain special char uppercase lowercase and number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateUserActivity.this, "Password must contain uppercase char and number", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -97,9 +97,8 @@ public class CreateUserActivity extends AppCompatActivity {
     }
 
     /*
-    Kolla om passwordet är tillåtet stor bokstav osv?
-    kanske nå regex?
-    ändra på regex till password inga special tecken kolla vidare.
+    Om vi vill ändra är det bara ta bort det första i regexen och ha det där (6,20) som kollar hur långt passwordet är
+    Just nu behöver man 1 stor bokstav och 1 nummer samt minst 6 tecken och högst 20 .
      */
     private boolean isValidEmail(CharSequence mail) {
 
@@ -109,7 +108,7 @@ public class CreateUserActivity extends AppCompatActivity {
     private boolean isValidPassword(String password) {
         Pattern pattern;
         Matcher matcher;
-        final String PASSWORD_PATTERN = "((?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{6,20})";
+        final String PASSWORD_PATTERN = "((?=.*[0-9])(?=.*[A-Z]).{6,20})";
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);
 
