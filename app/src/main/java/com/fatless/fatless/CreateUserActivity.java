@@ -73,7 +73,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 if (isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
                     regUser();
                 } else {
-                    Toast.makeText(CreateUserActivity.this, "Password must contain uppercase char and number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateUserActivity.this, "Password must contain 1 uppercase char and a number and be 6 letters minimum", Toast.LENGTH_SHORT).show();
                 }
 
             }
