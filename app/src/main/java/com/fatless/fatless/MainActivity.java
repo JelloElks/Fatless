@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
 
-    @BindView(R2.id.gotoButton)
+    @BindView(R2.id.registerButtonMain)
     Button gotoButton;
 
     @Override
