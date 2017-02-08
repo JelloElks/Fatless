@@ -21,7 +21,9 @@ public class LoggedInActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    @BindView(R2.id.logout_button)
     Button logout_button;
+    @BindView(R2.id.user_email)
     TextView user_email;
 
 
