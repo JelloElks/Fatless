@@ -1,5 +1,6 @@
 package com.fatless.fatless;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -90,6 +91,10 @@ public class CreateUserActivity extends AppCompatActivity {
 
                         if (!task.isSuccessful()) {
                             Toast.makeText(CreateUserActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        if (task.isComplete()) {
+                            startActivity(new Intent(CreateUserActivity.this, LoggedInActivity.class));
                         }
 
                     }
