@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @BindView(R2.id.registerButtonMain)
-    Button gotoButton;
+    Button registerWithMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        gotoButton.setOnClickListener(new View.OnClickListener() {
+        registerWithMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, CreateUserActivity.class));

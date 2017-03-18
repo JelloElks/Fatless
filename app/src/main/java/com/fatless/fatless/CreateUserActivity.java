@@ -93,7 +93,7 @@ public class CreateUserActivity extends AppCompatActivity {
                             Toast.makeText(CreateUserActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
 
-                        if (task.isComplete()) {
+                        if (task.isSuccessful()) {
                             startActivity(new Intent(CreateUserActivity.this, LoggedInActivity.class));
                         }
 
