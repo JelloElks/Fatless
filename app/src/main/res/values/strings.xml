@@ -16,4 +16,5 @@
         completions."
     </string>
     <string name="already_registerd_sign_in_here">Already registerd? Sign in here</string>
+    <string name="password_requirement">Password must contain 1 uppercase char and a number and be 6 letters minimum</string>
 </resources>

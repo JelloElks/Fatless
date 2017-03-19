@@ -40,7 +40,7 @@
 
         <Button
             android:layout_margin="15dp"
-            android:id="@+id/buttonRegister"
+            android:id="@+id/emailRegisterButton"
             android:text="Registerera"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
