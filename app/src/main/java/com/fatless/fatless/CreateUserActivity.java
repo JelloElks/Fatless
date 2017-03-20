@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
@@ -36,8 +37,8 @@ public class CreateUserActivity extends AppCompatActivity {
     @BindView(R2.id.editTextPassword)
     EditText editTextPassword;
 
-    @BindView(R2.id.buttonRegister)
-    Button buttonRegister;
+    @BindView(R2.id.emailRegisterButton)
+    Button emailRegisterButton;
 
     @BindView(R2.id.textViewSignin)
     TextView textViewSignin;
@@ -63,20 +64,30 @@ public class CreateUserActivity extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
+                    // User is signed o0t
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
         };
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+
+        emailRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isValidPassword(editTextPassword.getText().toString()) && isValidEmail(editTextEmail.getText().toString())) {
                     regUser();
-                } else {
-                    Toast.makeText(CreateUserActivity.this, "Password must contain 1 uppercase char and a number and be 6 letters minimum", Toast.LENGTH_SHORT).show();
+                    editTextEmail.setError(null);
+                    editTextPassword.setError(null);
                 }
+                if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
+                    editTextEmail.setError("Required.");
 
+                }
+                if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
+                    editTextPassword.setError("Required.");
+
+                } else if (!isValidPassword(editTextPassword.getText().toString())) {
+                    Toast.makeText(CreateUserActivity.this, R.string.password_requirement, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -90,11 +101,17 @@ public class CreateUserActivity extends AppCompatActivity {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                         if (!task.isSuccessful()) {
-                            Toast.makeText(CreateUserActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(CreateUserActivity.this, "User with this email is already registered", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(CreateUserActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         if (task.isSuccessful()) {
                             startActivity(new Intent(CreateUserActivity.this, LoggedInActivity.class));
+                            finish();
                         }
 
                     }

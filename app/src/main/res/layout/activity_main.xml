@@ -23,11 +23,11 @@
         android:inputType="textPassword"
         android:ems="10"
         android:layout_marginTop="20dp"
-        android:id="@+id/editText2"
+        android:id="@+id/login_password_text"
         android:textAlignment="center"
         android:hint="Lösen"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:layout_below="@+id/login_email_text"
+        android:layout_alignStart="@+id/login_email_text" />
 
     <EditText
         android:background="@drawable/text_view_shape"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/login_email_text"
         android:textAlignment="center"
         android:hint="Epost"
         android:layout_marginTop="20dp"
@@ -53,7 +53,7 @@
         android:textStyle="normal|bold"
         android:textColor="@color/TextColor"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignStart="@+id/login_email_text"
         android:layout_marginStart="27dp" />
 
     <TextView
@@ -77,13 +77,13 @@
         android:text="logga in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:id="@+id/login"
         android:textAllCaps="false"
         android:fontFamily="sans-serif"
         android:textSize="18sp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
+        android:layout_above="@+id/textView5"
+        android:layout_alignStart="@+id/login_password_text"
+        android:layout_marginBottom="21dp" />
 
     <TextView
         android:text="Eller logga in med facebook"

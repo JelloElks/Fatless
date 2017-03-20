@@ -46,8 +46,9 @@ public class LoggedInActivity extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
+                    startActivity(new Intent(LoggedInActivity.this, MainActivity.class));
+                    finish();
                 }
 
             }
@@ -73,7 +74,6 @@ public class LoggedInActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(LoggedInActivity.this, MainActivity.class));
 
                 }
             });
