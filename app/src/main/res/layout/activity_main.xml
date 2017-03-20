@@ -13,7 +13,7 @@
         android:id="@+id/imageView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        app:srcCompat="@color/FatLess_backgroundColor"
+        android:background="@drawable/animation_list"
         android:layout_height="170dp" />
 
     <EditText
