@@ -127,4 +127,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/facebook_login_button" />
 
+    <TextView
+        android:id="@+id/show_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/textView5"
+        android:padding="3dp"
+        android:text="Show"
+        android:textStyle="bold" />
+
 </RelativeLayout>

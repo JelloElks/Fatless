@@ -81,6 +81,8 @@ public class CreateUserActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
                     editTextEmail.setError("Required.");
 
+                } else if (!isValidEmail(editTextEmail.getText().toString())) {
+                    Toast.makeText(CreateUserActivity.this, "Wrong Email Format", Toast.LENGTH_SHORT).show();
                 }
                 if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
                     editTextPassword.setError("Required.");
@@ -124,7 +126,7 @@ public class CreateUserActivity extends AppCompatActivity {
      */
     private boolean isValidEmail(CharSequence mail) {
 
-        return !TextUtils.isEmpty(mail) && Patterns.EMAIL_ADDRESS.matcher(mail).matches();
+        return Patterns.EMAIL_ADDRESS.matcher(mail).matches();
     }
 
     private boolean isValidPassword(String password) {

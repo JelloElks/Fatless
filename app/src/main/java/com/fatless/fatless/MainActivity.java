@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
@@ -37,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R2.id.registerButtonMain)
     Button registerWithMail;
 
+    @BindView(R.id.show_pass)
+    TextView showPassword;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -81,6 +87,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        showPassword.setVisibility(View.GONE);
+
+        login_password_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (login_password_text.getText().length() > 0) {
+                    showPassword.setVisibility(View.VISIBLE);
+                } else {
+                    showPassword.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (showPassword.getText() == "Show") {
+                    showPassword.setText("Hide");
+                    login_password_text.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    login_password_text.setSelection(login_password_text.length());
+                } else {
+                    showPassword.setText("Show");
+                    login_password_text.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    login_password_text.setSelection(login_password_text.length());
+                }
+            }
+        });
     }
 
     @Override
