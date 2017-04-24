@@ -112,7 +112,7 @@ public class CreateUserActivity extends AppCompatActivity {
                         }
 
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(CreateUserActivity.this, LoggedInActivity.class));
+                            startActivity(new Intent(CreateUserActivity.this, ProfileActivity.class));
                             finish();
                         }
 

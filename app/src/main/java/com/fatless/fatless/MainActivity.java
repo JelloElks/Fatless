@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     //User is signed in
                     Toast.makeText(MainActivity.this, "Welcome  " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(MainActivity.this, LoggedInActivity.class));
+                    startActivity(new Intent(MainActivity.this, ProfileActivity.class));
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
