@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_logged_in"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.fatless.fatless.ProfileActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:id="@+id/profile_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:text="Logout"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/logout_button"
+                android:layout_alignBottom="@+id/logout_button" />
+
+
+            <ImageView
+                android:id="@+id/picture_in_frame"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/penguins" />
+
+
+            <TextView
+                android:id="@+id/change_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Change profile picture" />
+
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="15dp"
+                android:ems="10"
+                android:hint="Enter your username"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/user_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="15dp"
+                android:ems="10"
+                android:hint="Enter your length"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/user_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="15dp"
+                android:ems="10"
+                android:hint="Enter your Age"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/user_weight"
+                android:layout_width="329dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="15dp"
+                android:layout_weight="0.24"
+                android:ems="10"
+                android:hint="Enter your weight"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/save_profile"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:text="Save"
+
+                android:textAllCaps="false" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

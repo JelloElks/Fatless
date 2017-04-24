@@ -28,7 +28,7 @@
         </activity>
         <activity android:name=".CreateUserActivity" />
         <activity android:name=".RegisterTest" />
-        <activity android:name=".LoggedInActivity" />
+        <activity android:name=".ProfileActivity" />
     </application>
 
 </manifest>
