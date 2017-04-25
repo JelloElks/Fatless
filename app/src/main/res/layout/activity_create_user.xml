@@ -39,11 +39,13 @@
             android:id="@+id/editTextPassword" />
 
         <Button
-            android:layout_margin="15dp"
             android:id="@+id/emailRegisterButton"
-            android:text="Registerera"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:text="Register" />
 
         <TextView
             android:textAlignment="center"
