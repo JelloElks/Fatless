@@ -33,13 +33,6 @@
                 android:text="Logout"
                 android:textAllCaps="false" />
 
-            <TextView
-                android:id="@+id/user_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/logout_button"
-                android:layout_alignBottom="@+id/logout_button" />
-
 
             <ImageView
                 android:id="@+id/picture_in_frame"
