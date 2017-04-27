@@ -121,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 2);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -131,22 +131,24 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2 && resultCode == RESULT_OK && null != data) {
+        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
+            if (cursor != null) {
+                cursor.moveToFirst();
 
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            // String picturePath contains the path of selected Image
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                // String picturePath contains the path of selected Image
 
-            // Show the Selected Image on ImageView
-            ImageView imageView = picture_in_frame;
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                // Show the Selected Image on ImageView
+                ImageView imageView = picture_in_frame;
+                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
+            }
         }
     }
 
