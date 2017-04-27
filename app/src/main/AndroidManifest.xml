@@ -36,7 +36,8 @@
         <activity android:name=".RegisterTest" />
         <activity
             android:name=".ProfileActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            />
     </application>
 
 </manifest>
