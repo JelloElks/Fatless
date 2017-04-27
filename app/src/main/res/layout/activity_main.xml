@@ -5,7 +5,8 @@
     android:id="@+id/activity_register_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fatless.fatless.RegisterTest">
+    tools:context="com.fatless.fatless.RegisterTest"
+     >
 
 
     <ImageView
