@@ -121,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
         }
-
+/*
         picture_in_frame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +164,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
-
+*/
 
         picture_in_frame.setOnClickListener(new View.OnClickListener() {
             @Override
