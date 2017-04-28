@@ -1,19 +1,19 @@
 package com.fatless.fatless;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -21,12 +21,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.Manifest;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,8 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    String uid = user.getUid();
-                    prepareForm(uid);
+
                 } else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                     startActivity(new Intent(ProfileActivity.this, MainActivity.class));
@@ -90,7 +91,9 @@ public class ProfileActivity extends AppCompatActivity {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
-
+            String uid = user.getUid();
+            // prepareForm loads Preferences Object length weight age picture etc. bug atm can only change picture once while logged in
+            prepareForm(uid);
             String email = user.getEmail();
 
 
@@ -107,7 +110,10 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String uid = user.getUid();
                     saveProfile(uid);
-                    prepareForm(uid);
+                    /*
+                    Profile picture reverting to first image set if prepareForm is set here
+                     */
+                    // prepareForm(uid);
                     setProfilePhoto(uid);
                 }
             });
@@ -121,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
         }
-/*
+
         picture_in_frame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,7 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
                         } else {
 
                             // No explanation needed, we can request the permission.
-                            
+
                             ActivityCompat.requestPermissions(ProfileActivity.this,
                                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                                     MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
@@ -158,30 +164,64 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 } else {
 
-                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     photoPickerIntent.setType("image/*");
                     startActivityForResult(photoPickerIntent, SELECT_PHOTO);
                 }
             }
         });
-*/
-
-        picture_in_frame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 1);
-            }
-        });
-
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    photoPickerIntent.setType("image/*");
+                    startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(ProfileActivity.this, "Permissions Denied", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
+        switch (requestCode) {
+            case SELECT_PHOTO:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        final Uri imageUri = data.getData();
+                        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                        picture_in_frame.setImageBitmap(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+        }
+/*
+        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
@@ -198,8 +238,11 @@ public class ProfileActivity extends AppCompatActivity {
                 ImageView imageView = picture_in_frame;
                 imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
+            } else {
+                Log.e(TAG, "Error cursor null");
             }
         }
+        */
     }
 
 
@@ -233,8 +276,8 @@ public class ProfileActivity extends AppCompatActivity {
         if (user_weight != null) {
             editor.putString("userweight", user_weight.getText().toString());
         }
-
         editor.apply();
+        Log.i(TAG, " Succes:  SharedPreferences Saved");
     }
 
 
