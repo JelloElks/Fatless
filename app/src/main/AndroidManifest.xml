@@ -5,6 +5,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -36,8 +37,8 @@
         <activity android:name=".RegisterTest" />
         <activity
             android:name=".ProfileActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            />
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".SearchForFoodActivty"></activity>
     </application>
 
 </manifest>
