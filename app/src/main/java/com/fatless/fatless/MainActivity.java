@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R2.id.registerButtonMain)
     Button registerWithMail;
 
-    @BindView(R.id.show_pass)
+    @BindView(R2.id.show_pass)
     TextView showPassword;
 
     private FirebaseAuth mAuth;
