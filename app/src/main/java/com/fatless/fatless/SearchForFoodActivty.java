@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,8 +38,9 @@ public class SearchForFoodActivty extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @BindView(R2.id.get_food_button)
-    Button get_food_button;
+    private ArrayList<FoodItems> foodList;
+    ArrayAdapter<FoodItems> itemsAdapter;
+
 
     @BindView(R2.id.list_food)
     ListView list_food;
@@ -66,23 +70,46 @@ public class SearchForFoodActivty extends AppCompatActivity {
             }
         };
 
-
-        get_food_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
-
+        // Gets listView items
+        populateFoodList();
 
     }
 
-    private void populateFoodList(View view) {
+    public void manageJson(String result) {
 
-        final ArrayList<FoodItems> foodItemsArrayList = new ArrayList<>();
 
-        String urlToMat = "/foodstuff?query=mjöl";
+        try {
+            foodList = new ArrayList<>();
+
+            JSONArray jsonArray = new JSONArray(result);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                String name = jsonObject.getString("name");
+                int number = jsonObject.getInt("number");
+                // int energyKcal = jsonObject.getInt("energyKcal");
+                FoodItems foodItems = new FoodItems(name);
+
+                foodItems.setName(name);
+                foodItems.setNumber(number);
+
+                foodList.add(foodItems);
+            }
+
+            itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, foodList);
+            list_food.setAdapter(itemsAdapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e(TAG, e.toString());
+        }
+    }
+
+
+    private void populateFoodList() {
+
+
+        String urlToMat = "http://www.matapi.se/foodstuff?query=";
 
         if (isNetworkAvailable()) {
 
@@ -95,13 +122,27 @@ public class SearchForFoodActivty extends AppCompatActivity {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-
+                    Log.e(TAG, "Failed  :" + e.toString());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
 
-                    String jsonData = response.body().string();
+                    final String jsonData = response.body().string();
+
+                    Log.v(TAG, jsonData);
+                    if (response.isSuccessful()) {
+
+
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                manageJson(jsonData);
+                            }
+                        });
+
+
+                    }
+
                 }
             });
         }

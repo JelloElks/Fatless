@@ -53,6 +53,11 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R2.id.save_profile)
     Button save_profile;
 
+    // Go to SearchForFoodActivity temp
+    @BindView(R2.id.go_to_food)
+    Button goToFoodBtn;
+
+
     @BindView(R2.id.user_name)
     EditText user_name;
     @BindView(R2.id.user_age)
@@ -103,6 +108,14 @@ public class ProfileActivity extends AppCompatActivity {
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
+
+
+            goToFoodBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(ProfileActivity.this, SearchForFoodActivty.class));
+                }
+            });
 
 
             save_profile.setOnClickListener(new View.OnClickListener() {
@@ -250,10 +263,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("profileprefs" + uid, MODE_PRIVATE);
 
-        user_name.setText(preferences.getString("username", " "));
-        user_age.setText(preferences.getString("userage", " "));
-        user_length.setText(preferences.getString("userlength", " "));
-        user_weight.setText(preferences.getString("userweight", " "));
+        user_name.setText(preferences.getString("username", ""));
+        user_age.setText(preferences.getString("userage", ""));
+        user_length.setText(preferences.getString("userlength", ""));
+        user_weight.setText(preferences.getString("userweight", ""));
         String img_str = preferences.getString("userphoto", "");
         if (!img_str.equals("")) {
             byte[] imageAsBytes = Base64.decode(img_str.getBytes(), Base64.DEFAULT);

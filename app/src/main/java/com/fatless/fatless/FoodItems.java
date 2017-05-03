@@ -3,17 +3,38 @@ package com.fatless.fatless;
 
 class FoodItems {
 
-    private String foodName;
+    private String name;
+    private int number;
     private int protein;
     private int fat;
     private int energyKcal;
 
-    public String getFoodName() {
-        return foodName;
+
+    public FoodItems(String name) {
+        this.name = name;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+
+    @Override
+    public String toString() {
+        return name;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getProtein() {
