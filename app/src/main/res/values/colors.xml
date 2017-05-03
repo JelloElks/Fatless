@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#323e4a</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#e4e3e1</color>
     <color name="TextColor">#81e4b2</color>
     <color name="FatLess_backgroundColor">#323e4a</color>
 
@@ -15,5 +15,6 @@
     <color name="color7">#FF5722</color>
     <color name="color8">#FFA000</color>
     <color name="the_background">#454752</color>
+    <color name="fatlessText">#e4e3e1</color>
 
 </resources>

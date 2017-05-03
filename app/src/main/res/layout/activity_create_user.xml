@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.fatless.fatless.CreateUserActivity">
+    tools:context="com.fatless.fatless.CreateUserActivity"
+    android:background="@color/the_background">
 
     <LinearLayout
 
@@ -21,38 +22,48 @@
         android:layout_alignParentStart="true">
 
         <EditText
-            android:layout_margin="15dp"
-            android:hint="Enter your Email"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/fatlessText"
             android:ems="10"
-            android:id="@+id/editTextEmail" />
+            android:hint="Enter your Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/fatlessText"
+            android:textColorHighlight="@color/fatlessText"
+            android:textColorHint="@color/fatlessText" />
 
         <EditText
-            android:layout_margin="15dp"
-            android:hint="Enter your Password"
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:layout_margin="15dp"
+            android:backgroundTint="#e4e3e1"
             android:ems="10"
-            android:id="@+id/editTextPassword" />
+            android:hint="Enter your Password"
+            android:inputType="textPassword"
+            android:textColor="#e4e3e1"
+            android:textColorHint="@color/fatlessText" />
 
         <Button
             android:id="@+id/emailRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
+            android:background="@drawable/text_view_shape"
+            android:text="Register"
             android:textAllCaps="false"
-            android:textSize="18sp"
-            android:text="Register" />
+            android:textColor="#cfd1cb"
+            android:textSize="18sp" />
 
         <TextView
-            android:textAlignment="center"
-            android:text="Already registerd? sign in here!"
             android:id="@+id/textViewSignin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Already registerd? sign in here!"
+            android:textAlignment="center"
+            android:textColor="#81e4b2" />
 
     </LinearLayout>
 
