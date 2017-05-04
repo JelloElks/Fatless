@@ -3,15 +3,14 @@ package com.fatless.fatless;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +40,9 @@ public class SearchForFoodActivty extends AppCompatActivity {
     private ArrayList<FoodItems> foodList;
     ArrayAdapter<FoodItems> itemsAdapter;
 
+
+    @BindView(R2.id.search_food)
+    SearchView search_food;
 
     @BindView(R2.id.list_food)
     ListView list_food;
@@ -72,7 +74,20 @@ public class SearchForFoodActivty extends AppCompatActivity {
 
         // Gets listView items
         populateFoodList();
+        search_food.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                itemsAdapter.getFilter().filter(query);
 
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                itemsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     public void manageJson(String result) {
