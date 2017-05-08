@@ -7,13 +7,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,34 +29,30 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+public class FoodInformationActivity extends AppCompatActivity {
 
-public class SearchForFoodActivty extends AppCompatActivity {
-
-    private static final String TAG = SearchForFoodActivty.class.getName();
+    private static final String TAG = FoodInformationActivity.class.getName();
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    //private int number;
-    //private String foodUrlInfo = "http://www.matapi.se/foodstuff?query=" + number;
+    private ArrayList<FoodInformation> foodInfoList;
+    // private ArrayAdapter<FoodInformation> informationArrayAdapter;
 
-    private ArrayList<FoodItems> foodList;
-    private ArrayAdapter<FoodItems> itemsAdapter;
+    private String foodUrlInfo = "http://www.matapi.se/foodstuff/";
+    private String name;
+    private int number;
 
-
-    @BindView(R2.id.search_food)
-    SearchView search_food;
-
-    @BindView(R2.id.list_food)
-    ListView list_food;
-
+    @BindView(R2.id.food_name)
+    TextView food_name;
+    @BindView(R2.id.food_info_view)
+    TextView food_info_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_for_food);
+        setContentView(R.layout.activity_food_information);
         ButterKnife.bind(this);
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -74,72 +65,64 @@ public class SearchForFoodActivty extends AppCompatActivity {
                     //User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
-                    startActivity(new Intent(SearchForFoodActivty.this, MainActivity.class));
+                    startActivity(new Intent(FoodInformationActivity.this, MainActivity.class));
                     finish();
+                    // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
         };
 
-        // Gets listView items
-        populateFoodList();
+        Intent intent = getIntent();
+        number = intent.getIntExtra("number", 0);
+        name = intent.getStringExtra("name");
 
-        search_food.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                itemsAdapter.getFilter().filter(query);
+        food_name.setText(name);
+        getFoodInformation(number);
 
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                itemsAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
     }
+
 
     public void manageJson(String result) {
 
 
         try {
-            foodList = new ArrayList<>();
+            foodInfoList = new ArrayList<>();
 
-            JSONArray jsonArray = new JSONArray(result);
+
+            //TODO är inte en array är redan ett jsonObject måste komma på nå sätt att få ut dom värden vi vill ha och inte alla.
+            JSONObject jsObject = new JSONObject(result);
+            JSONArray jsonArray = jsObject.getJSONArray("nutrientValues");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 String name = jsonObject.getString("name");
                 int number = jsonObject.getInt("number");
-                // int energyKcal = jsonObject.getInt("energyKcal");
-                FoodItems foodItems = new FoodItems(name);
+                int protein = jsonObject.getInt("protein");
+                int energyKcal = jsonObject.getInt("energyKcal");
+                int fat = jsonObject.getInt("fat");
+                int sodium = jsonObject.getInt("sodium");
 
-                foodItems.setName(name);
-                foodItems.setNumber(number);
+                FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
+                foodInformation.setName(name);
+                foodInformation.setProtein(protein);
+                foodInformation.setEnergyKcal(energyKcal);
+                foodInformation.setFat(fat);
+                foodInformation.setSodium(sodium);
 
-                foodList.add(foodItems);
+                foodInfoList.add(foodInformation);
             }
 
-            itemsAdapter = new ArrayAdapter<>(this, R.layout.list_white_text_simple, foodList);
+            StringBuilder builder = new StringBuilder();
+            for (FoodInformation information : foodInfoList) {
+                builder.append(information).append("\n");
+            }
 
-            list_food.setAdapter(itemsAdapter);
+            food_info_view.setText(builder.toString());
+            //  informationArrayAdapter = new ArrayAdapter<>(this, R.layout.list_white_text_simple, foodInfoList);
 
-            list_food.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // food_info_view.setAdapter(informationArrayAdapter);
 
-                    FoodItems fooditem = (FoodItems) list_food.getItemAtPosition(position);
-                    Intent intent = new Intent(SearchForFoodActivty.this, FoodInformationActivity.class);
-                    intent.putExtra("name", fooditem.getName());
-                    intent.putExtra("number", fooditem.getNumber());
-                    startActivity(intent);
-
-
-                    //Toast.makeText(SearchForFoodActivty.this, "number :  " + fooditem.getNumber() + "  name : +" + fooditem.getName(), Toast.LENGTH_SHORT).show();
-                }
-            });
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -148,16 +131,14 @@ public class SearchForFoodActivty extends AppCompatActivity {
     }
 
 
-    private void populateFoodList() {
+    private void getFoodInformation(int number) {
 
-
-        String urlToMat = "http://www.matapi.se/foodstuff?query=";
 
         if (isNetworkAvailable()) {
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url(urlToMat)
+                    .url(foodUrlInfo + number)
                     .build();
 
             Call call = client.newCall(request);
@@ -182,7 +163,6 @@ public class SearchForFoodActivty extends AppCompatActivity {
                             }
                         });
 
-
                     }
 
                 }
@@ -204,7 +184,6 @@ public class SearchForFoodActivty extends AppCompatActivity {
 
         return isAvailable;
     }
-
 
     @Override
     public void onStart() {

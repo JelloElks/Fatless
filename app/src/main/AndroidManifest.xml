@@ -37,10 +37,11 @@
         <activity android:name=".CreateUserActivity" />
         <activity android:name=".RegisterTest" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".ProfileActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".SearchForFoodActivty"></activity>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SearchForFoodActivty" />
+        <activity android:name=".FoodInformationActivity" />
     </application>
 
 </manifest>

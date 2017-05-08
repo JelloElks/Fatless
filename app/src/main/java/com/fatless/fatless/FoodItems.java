@@ -5,15 +5,15 @@ class FoodItems {
 
     private String name;
     private int number;
-    private int protein;
-    private int fat;
-    private int energyKcal;
 
 
-    public FoodItems(String name) {
+    FoodItems(String name) {
         this.name = name;
     }
 
+    FoodItems() {
+
+    }
 
     @Override
     public String toString() {
@@ -29,35 +29,13 @@ class FoodItems {
         this.name = name;
     }
 
-    public int getNumber() {
+    int getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    void setNumber(int number) {
         this.number = number;
     }
 
-    public int getProtein() {
-        return protein;
-    }
 
-    public void setProtein(int protein) {
-        this.protein = protein;
-    }
-
-    public int getFat() {
-        return fat;
-    }
-
-    public void setFat(int fat) {
-        this.fat = fat;
-    }
-
-    public int getEnergyKcal() {
-        return energyKcal;
-    }
-
-    public void setEnergyKcal(int energyKcal) {
-        this.energyKcal = energyKcal;
-    }
 }
