@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,7 +36,6 @@ public class FoodInformationActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private ArrayList<FoodInformation> foodInfoList;
-    // private ArrayAdapter<FoodInformation> informationArrayAdapter;
 
     private String foodUrlInfo = "http://www.matapi.se/foodstuff/";
     private String name;
@@ -89,29 +87,18 @@ public class FoodInformationActivity extends AppCompatActivity {
         try {
             foodInfoList = new ArrayList<>();
 
-
-            //TODO är inte en array är redan ett jsonObject måste komma på nå sätt att få ut dom värden vi vill ha och inte alla.
             JSONObject jsObject = new JSONObject(result);
-            JSONArray jsonArray = jsObject.getJSONArray("nutrientValues");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                String name = jsonObject.getString("name");
-                int number = jsonObject.getInt("number");
-                int protein = jsonObject.getInt("protein");
-                int energyKcal = jsonObject.getInt("energyKcal");
-                int fat = jsonObject.getInt("fat");
-                int sodium = jsonObject.getInt("sodium");
+            JSONObject jss = jsObject.getJSONObject("nutrientValues");
 
-                FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
-                foodInformation.setName(name);
-                foodInformation.setProtein(protein);
-                foodInformation.setEnergyKcal(energyKcal);
-                foodInformation.setFat(fat);
-                foodInformation.setSodium(sodium);
 
-                foodInfoList.add(foodInformation);
-            }
+            int protein = jss.getInt("protein");
+            int energyKcal = jss.getInt("energyKcal");
+            int fat = jss.getInt("fat");
+            int sodium = jss.getInt("sodium");
+            FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
+
+            foodInfoList.add(foodInformation);
 
             StringBuilder builder = new StringBuilder();
             for (FoodInformation information : foodInfoList) {
@@ -119,10 +106,6 @@ public class FoodInformationActivity extends AppCompatActivity {
             }
 
             food_info_view.setText(builder.toString());
-            //  informationArrayAdapter = new ArrayAdapter<>(this, R.layout.list_white_text_simple, foodInfoList);
-
-            // food_info_view.setAdapter(informationArrayAdapter);
-
 
         } catch (JSONException e) {
             e.printStackTrace();
