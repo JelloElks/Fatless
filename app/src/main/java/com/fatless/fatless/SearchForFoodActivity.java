@@ -35,15 +35,13 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class SearchForFoodActivty extends AppCompatActivity {
+public class SearchForFoodActivity extends AppCompatActivity {
 
-    private static final String TAG = SearchForFoodActivty.class.getName();
+    private static final String TAG = SearchForFoodActivity.class.getName();
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    //private int number;
-    //private String foodUrlInfo = "http://www.matapi.se/foodstuff?query=" + number;
 
     private ArrayList<FoodItems> foodList;
     private ArrayAdapter<FoodItems> itemsAdapter;
@@ -75,7 +73,7 @@ public class SearchForFoodActivty extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    startActivity(new Intent(SearchForFoodActivty.this, MainActivity.class));
+                    startActivity(new Intent(SearchForFoodActivity.this, MainActivity.class));
                     finish();
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
@@ -113,7 +111,7 @@ public class SearchForFoodActivty extends AppCompatActivity {
 
                 String name = jsonObject.getString("name");
                 int number = jsonObject.getInt("number");
-                // int energyKcal = jsonObject.getInt("energyKcal");
+
                 FoodItems foodItems = new FoodItems(name);
 
                 foodItems.setName(name);
@@ -131,13 +129,13 @@ public class SearchForFoodActivty extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     FoodItems fooditem = (FoodItems) list_food.getItemAtPosition(position);
-                    Intent intent = new Intent(SearchForFoodActivty.this, FoodInformationActivity.class);
+                    Intent intent = new Intent(SearchForFoodActivity.this, FoodInformationActivity.class);
                     intent.putExtra("name", fooditem.getName());
                     intent.putExtra("number", fooditem.getNumber());
                     startActivity(intent);
 
 
-                    //Toast.makeText(SearchForFoodActivty.this, "number :  " + fooditem.getNumber() + "  name : +" + fooditem.getName(), Toast.LENGTH_SHORT).show();
+
                 }
             });
 

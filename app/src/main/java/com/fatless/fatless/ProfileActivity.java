@@ -113,7 +113,7 @@ public class ProfileActivity extends AppCompatActivity {
             goToFoodBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(ProfileActivity.this, SearchForFoodActivty.class));
+                    startActivity(new Intent(ProfileActivity.this, SearchForFoodActivity.class));
                 }
             });
 
@@ -233,29 +233,6 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
         }
-/*
-        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            if (cursor != null) {
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-                // String picturePath contains the path of selected Image
-
-                // Show the Selected Image on ImageView
-                ImageView imageView = picture_in_frame;
-                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-            } else {
-                Log.e(TAG, "Error cursor null");
-            }
-        }
-        */
     }
 
 
@@ -302,9 +279,7 @@ public class ProfileActivity extends AppCompatActivity {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
         byte[] image = stream.toByteArray();
-        //System.out.println("byte array:"+image);
-        //final String img_str = "data:image/png;base64,"+ Base64.encodeToString(image, 0);
-        //System.out.println("string:"+img_str);
+
         String img_str = Base64.encodeToString(image, 0);
         //decode string to image
         byte[] imageAsBytes = Base64.decode(img_str.getBytes(), Base64.DEFAULT);

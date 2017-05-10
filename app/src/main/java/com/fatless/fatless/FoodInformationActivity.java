@@ -31,13 +31,13 @@ import okhttp3.Response;
 public class FoodInformationActivity extends AppCompatActivity {
 
     private static final String TAG = FoodInformationActivity.class.getName();
+    private static final String FOOD_URL_INFO = "http://www.matapi.se/foodstuff/";
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private ArrayList<FoodInformation> foodInfoList;
 
-    private String foodUrlInfo = "http://www.matapi.se/foodstuff/";
     private String name;
     private int number;
 
@@ -121,7 +121,7 @@ public class FoodInformationActivity extends AppCompatActivity {
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url(foodUrlInfo + number)
+                    .url(FOOD_URL_INFO + number)
                     .build();
 
             Call call = client.newCall(request);

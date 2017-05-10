@@ -21,7 +21,11 @@ class FoodInformation {
 
     @Override
     public String toString() {
-        return "Food Information " + "Protein :" + protein + " Fat :" + fat + " EnergyKcal :" + energyKcal + " Sodium :" + sodium;
+        return "Food Information " +
+                " Protein : " + protein +
+                " Fat : " + fat +
+                " EnergyKcal : " + energyKcal +
+                " Sodium : " + sodium;
     }
 
 

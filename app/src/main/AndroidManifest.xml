@@ -40,7 +40,7 @@
             android:name=".ProfileActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".SearchForFoodActivty" />
+        <activity android:name=".SearchForFoodActivity" />
         <activity android:name=".FoodInformationActivity" />
     </application>
 
