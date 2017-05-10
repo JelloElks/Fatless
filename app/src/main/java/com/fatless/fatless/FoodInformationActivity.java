@@ -43,8 +43,18 @@ public class FoodInformationActivity extends AppCompatActivity {
 
     @BindView(R2.id.food_name)
     TextView food_name;
-    @BindView(R2.id.food_info_view)
-    TextView food_info_view;
+    @BindView(R2.id.food_information_text)
+    TextView food_information_text;
+
+    @BindView(R2.id.energyKcal_text_info)
+    TextView energyKcal_text_info;
+    @BindView(R2.id.protein_text_info)
+    TextView protein_text_info;
+    @BindView(R2.id.fat_text_info)
+    TextView fat_text_info;
+    @BindView(R2.id.sodium_text_info)
+    TextView sodium_text_info;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,13 +110,12 @@ public class FoodInformationActivity extends AppCompatActivity {
 
             foodInfoList.add(foodInformation);
 
-            StringBuilder builder = new StringBuilder();
-            for (FoodInformation information : foodInfoList) {
-                builder.append(information).append("\n");
-            }
 
-            food_info_view.setText(builder.toString());
-
+            energyKcal_text_info.setText(String.format("EnergyKcal :  %s", String.valueOf(foodInformation.getEnergyKcal())));
+            fat_text_info.setText(String.format("Fat :  %s", String.valueOf(foodInformation.getFat())));
+            protein_text_info.setText(String.format("Protein :  %s", String.valueOf(foodInformation.getProtein())));
+            sodium_text_info.setText(String.format("Sodium :  %s", String.valueOf(foodInformation.getSodium())));
+            
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e(TAG, e.toString());

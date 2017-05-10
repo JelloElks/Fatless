@@ -7,28 +7,86 @@
     tools:context="com.fatless.fatless.FoodInformationActivity">
 
     <TextView
-        android:id="@+id/food_info_view"
-        android:layout_width="270dp"
-        android:layout_height="355dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:contentDescription="food information"
+        android:id="@+id/sodium_text_info"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="18sp"
+        android:text="Sodium"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="212dp"
-        tools:layout_editor_absoluteX="34dp" />
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/energyKcal_text_info"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="18sp"
+        android:text="EnergyKcal"
+        app:layout_constraintBottom_toTopOf="@+id/protein_text_info"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/food_name"
-        android:layout_width="228dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="Food name"
-        android:layout_marginLeft="8dp"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="4dp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fat_text_info"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="18sp"
+        android:text="Fat"
+        app:layout_constraintBottom_toTopOf="@+id/sodium_text_info"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/protein_text_info"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="18sp"
+        android:text="Protein"
+        app:layout_constraintBottom_toTopOf="@+id/fat_text_info"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/food_information_text"
+        android:layout_width="223dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="42dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="24sp"
+        android:text="Food Information"
+        app:layout_constraintBottom_toTopOf="@+id/energyKcal_text_info"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.503" />
 </android.support.constraint.ConstraintLayout>
