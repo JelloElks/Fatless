@@ -128,12 +128,11 @@ public class SearchForFoodActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    FoodItems fooditem = (FoodItems) list_food.getItemAtPosition(position);
+                    FoodItems foodItems = (FoodItems) list_food.getItemAtPosition(position);
                     Intent intent = new Intent(SearchForFoodActivity.this, FoodInformationActivity.class);
-                    intent.putExtra("name", fooditem.getName());
-                    intent.putExtra("number", fooditem.getNumber());
+                    intent.putExtra("name", foodItems.getName());
+                    intent.putExtra("number", foodItems.getNumber());
                     startActivity(intent);
-
 
 
                 }

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +57,9 @@ public class FoodInformationActivity extends AppCompatActivity {
     @BindView(R2.id.sodium_text_info)
     TextView sodium_text_info;
 
+    @BindView(R2.id.pick_food_button)
+    Button pick_food_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,13 @@ public class FoodInformationActivity extends AppCompatActivity {
         food_name.setText(name);
         getFoodInformation(number);
 
+        pick_food_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
 
@@ -107,7 +119,7 @@ public class FoodInformationActivity extends AppCompatActivity {
             int fat = jss.getInt("fat");
             int sodium = jss.getInt("sodium");
             FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
-
+            foodInformation.setName(name);
             foodInfoList.add(foodInformation);
 
 
@@ -115,7 +127,7 @@ public class FoodInformationActivity extends AppCompatActivity {
             fat_text_info.setText(String.format("Fat :  %s", String.valueOf(foodInformation.getFat())));
             protein_text_info.setText(String.format("Protein :  %s", String.valueOf(foodInformation.getProtein())));
             sodium_text_info.setText(String.format("Sodium :  %s", String.valueOf(foodInformation.getSodium())));
-            
+
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e(TAG, e.toString());
