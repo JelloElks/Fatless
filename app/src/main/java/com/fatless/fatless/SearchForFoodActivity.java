@@ -1,16 +1,19 @@
 package com.fatless.fatless;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,16 +34,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SearchForFoodActivty extends AppCompatActivity {
 
-    private static final String TAG = SearchForFoodActivty.class.getName();
+public class SearchForFoodActivity extends AppCompatActivity {
+
+    private static final String TAG = SearchForFoodActivity.class.getName();
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    private ArrayList<FoodItems> foodList;
-    ArrayAdapter<FoodItems> itemsAdapter;
 
+    private ArrayList<FoodItems> foodList;
+    private ArrayAdapter<FoodItems> itemsAdapter;
+
+
+    @BindView(R2.id.search_food)
+    SearchView search_food;
 
     @BindView(R2.id.list_food)
     ListView list_food;
@@ -65,6 +73,8 @@ public class SearchForFoodActivty extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
+                    startActivity(new Intent(SearchForFoodActivity.this, MainActivity.class));
+                    finish();
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
@@ -73,6 +83,20 @@ public class SearchForFoodActivty extends AppCompatActivity {
         // Gets listView items
         populateFoodList();
 
+        search_food.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                itemsAdapter.getFilter().filter(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                itemsAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     public void manageJson(String result) {
@@ -87,7 +111,7 @@ public class SearchForFoodActivty extends AppCompatActivity {
 
                 String name = jsonObject.getString("name");
                 int number = jsonObject.getInt("number");
-                // int energyKcal = jsonObject.getInt("energyKcal");
+
                 FoodItems foodItems = new FoodItems(name);
 
                 foodItems.setName(name);
@@ -96,8 +120,23 @@ public class SearchForFoodActivty extends AppCompatActivity {
                 foodList.add(foodItems);
             }
 
-            itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, foodList);
+            itemsAdapter = new ArrayAdapter<>(this, R.layout.list_white_text_simple, foodList);
+
             list_food.setAdapter(itemsAdapter);
+
+            list_food.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    FoodItems foodItems = (FoodItems) list_food.getItemAtPosition(position);
+                    Intent intent = new Intent(SearchForFoodActivity.this, FoodInformationActivity.class);
+                    intent.putExtra("name", foodItems.getName());
+                    intent.putExtra("number", foodItems.getNumber());
+                    startActivity(intent);
+
+
+                }
+            });
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -145,6 +184,8 @@ public class SearchForFoodActivty extends AppCompatActivity {
 
                 }
             });
+        } else {
+            Toast.makeText(this, "Network is not available", Toast.LENGTH_SHORT).show();
         }
     }
 

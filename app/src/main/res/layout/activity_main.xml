@@ -60,21 +60,21 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="Eller logga in med facebook"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
         android:layout_above="@+id/facebook_login_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="9dp" />
+        android:layout_marginBottom="9dp"
+        android:text="Login with facebook" />
 
     <TextView
-        android:text="Inget konto?"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
         android:layout_above="@+id/registerButtonMain"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="No account?" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/facebook_login_button"
