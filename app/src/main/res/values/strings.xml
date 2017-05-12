@@ -26,4 +26,8 @@
     <string name="energyKcal_textView">EnergyKcal</string>
     <string name="sodium_textView">Sodium</string>
     <string name="pick_food_btn_text">Pick food</string>
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
 </resources>

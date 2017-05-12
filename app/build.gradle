@@ -39,7 +39,7 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-
+android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
 
 
