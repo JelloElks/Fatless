@@ -19,4 +19,10 @@
     <string name="password_requirement">Password must contain 1 uppercase char and a number and be 6 letters minimum</string>
     <string name="profile_picture">profilepicture</string>
     <string name="network_unavailable_message">Network is unavailable</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

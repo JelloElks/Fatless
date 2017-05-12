@@ -57,7 +57,6 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R2.id.go_to_food)
     Button goToFoodBtn;
 
-
     @BindView(R2.id.user_name)
     EditText user_name;
     @BindView(R2.id.user_age)
@@ -73,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -128,6 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
                      */
                     // prepareForm(uid);
                     setProfilePhoto(uid);
+                    startActivity(new Intent(ProfileActivity.this, Home.class));
                 }
             });
 
@@ -140,6 +141,7 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
         }
+
 
         picture_in_frame.setOnClickListener(new View.OnClickListener() {
             @Override

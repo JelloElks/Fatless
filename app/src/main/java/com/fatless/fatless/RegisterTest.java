@@ -22,8 +22,6 @@ public class RegisterTest extends AppCompatActivity {
         setContentView(R.layout.activity_register_test);
         ButterKnife.bind(this);
 
-        gardientBackground.setBackgroundResource(R.drawable.animation_list);
-
         AnimationDrawable anim = (AnimationDrawable) gardientBackground.getBackground();
 
         anim.start();
