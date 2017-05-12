@@ -19,8 +19,6 @@ import butterknife.BindView;
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R2.id.)
-    ImageButton toolMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
