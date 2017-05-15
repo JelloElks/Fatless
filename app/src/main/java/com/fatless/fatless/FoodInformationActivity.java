@@ -78,7 +78,7 @@ public class FoodInformationActivity extends AppCompatActivity {
                     //User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    startActivity(new Intent(FoodInformationActivity.this, MainActivity.class));
+                    startActivity(new Intent(FoodInformationActivity.this, LoginActivity.class));
                     finish();
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");

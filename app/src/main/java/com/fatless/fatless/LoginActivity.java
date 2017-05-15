@@ -26,9 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getName();
+    private static final String TAG = LoginActivity.class.getName();
     @BindView(R2.id.login_password_text)
     EditText login_password_text;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         //Butterknife bindings
         ButterKnife.bind(this);
 
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //User is signed in
-                    Toast.makeText(MainActivity.this, "Welcome  " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome  " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         registerWithMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, CreateUserActivity.class));
+                startActivity(new Intent(LoginActivity.this, CreateUserActivity.class));
             }
         });
 
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!task.isSuccessful()) {
                     Log.w(TAG, "signInWithMail : failed" + task.getException());
-                    Toast.makeText(MainActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                 }
 
             }

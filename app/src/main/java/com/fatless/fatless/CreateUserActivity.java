@@ -70,6 +70,14 @@ public class CreateUserActivity extends AppCompatActivity {
             }
         };
 
+        textViewSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CreateUserActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+
         emailRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
