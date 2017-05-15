@@ -31,4 +31,23 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="food_btn">Food</string>
+    <string name="change_profile_picture">Change profile picture</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_your_weight_kg">Enter your weight (kg)</string>
+    <string name="enter_your_length">Enter your length</string>
+    <string name="enter_your_age">Enter your age</string>
+    <string name="save_profile_btn">Save</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="register_btn">Register</string>
+    <string name="already_registerd_create_user">Already registerd? sign in here!</string>
+    <string name="password_login_hint">Password</string>
+    <string name="email_login_hint">Email</string>
+    <string name="login_btn">Login</string>
+    <string name="login_with_facebook_text">Login with facebook</string>
+    <string name="no_account_text">No account?</string>
+    <string name="register_here_login_btn">Register here</string>
+    <string name="show_hide_password">Show</string>
 </resources>

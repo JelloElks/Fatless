@@ -5,19 +5,19 @@
     android:id="@+id/activity_register_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fatless.fatless.RegisterTest"
-     >
+    tools:context="com.fatless.fatless.RegisterTest">
 
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="1080dp"
         android:layout_height="170dp"
-        android:src="@drawable/fatless"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fatless"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/login_password_text"
@@ -28,7 +28,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/text_view_shape"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password_login_hint"
         android:inputType="textPassword"
         android:textAlignment="center" />
 
@@ -41,7 +41,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/text_view_shape"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email_login_hint"
         android:inputType="textEmailAddress"
         android:textAlignment="center" />
 
@@ -54,7 +54,7 @@
         android:layout_marginBottom="21dp"
         android:background="@drawable/button_shape"
         android:fontFamily="sans-serif"
-        android:text="Login"
+        android:text="@string/login_btn"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp" />
@@ -66,7 +66,7 @@
         android:layout_above="@+id/facebook_login_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="9dp"
-        android:text="Login with facebook" />
+        android:text="@string/login_with_facebook_text" />
 
     <TextView
         android:id="@+id/textView4"
@@ -74,18 +74,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/registerButtonMain"
         android:layout_centerHorizontal="true"
-        android:text="No account?" />
+        android:text="@string/no_account_text" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/facebook_login_button"
-        android:layout_gravity="center_horizontal"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:elevation="0dp"
-        android:textAllCaps="false"
-        android:layout_marginBottom="33dp"
         android:layout_above="@+id/textView4"
-        android:layout_alignStart="@+id/login" />
+        android:layout_alignStart="@+id/login"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="33dp"
+        android:elevation="0dp"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/registerButtonMain"
@@ -96,7 +96,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_shape"
         android:fontFamily="sans-serif"
-        android:text="Register here"
+        android:text="@string/register_here_login_btn"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp" />
@@ -105,14 +105,14 @@
         android:id="@+id/show_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/login_password_text"
+        android:layout_alignBottom="@+id/login_password_text"
+        android:layout_alignEnd="@+id/login_password_text"
         android:layout_centerInParent="false"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:padding="3dp"
-        android:text="Show"
-        android:textStyle="bold"
-        android:layout_alignBaseline="@+id/login_password_text"
-        android:layout_alignBottom="@+id/login_password_text"
-        android:layout_alignEnd="@+id/login_password_text" />
+        android:text="@string/show_hide_password"
+        android:textStyle="bold" />
 
 </RelativeLayout>

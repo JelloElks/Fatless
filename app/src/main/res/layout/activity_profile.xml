@@ -17,21 +17,21 @@
         android:id="@+id/logout_button"
         android:layout_width="90dp"
         android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="end"
         android:background="@drawable/text_view_shape"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textAllCaps="false"
-        android:textColor="@color/cardview_light_background"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="@color/cardview_light_background" />
 
     <Button
         android:id="@+id/go_to_food"
         android:layout_width="90dp"
         android:layout_height="30dp"
         android:background="@drawable/text_view_shape"
-        android:textColor="@color/cardview_light_background"
-        android:text="Food" />
+        android:text="@string/food_btn"
+        android:textColor="@color/cardview_light_background" />
 
     <LinearLayout
 
@@ -60,93 +60,93 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Change profile picture"
+            android:text="@string/change_profile_picture"
             android:textColor="#cfd1cb" />
 
     </LinearLayout>
 
     <EditText
         android:id="@+id/user_name"
-        android:layout_width="325dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/user_weight"
+        android:layout_alignParentStart="true"
         android:layout_gravity="end"
+        android:layout_marginBottom="13dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="#cfd1cb"
         android:ems="10"
-        android:hint="Enter your username"
+        android:hint="@string/enter_your_username"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#cfd1cb"
         android:textColorHint="#cfd1cb"
-        android:textColorLink="#cfd1cb"
-        android:layout_above="@+id/user_weight"
-        android:layout_marginBottom="13dp"
-        android:layout_alignParentStart="true" />
+        android:textColorLink="#cfd1cb" />
 
     <EditText
         android:id="@+id/user_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/user_length"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="end"
+        android:layout_marginBottom="17dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="#cfd1cb"
         android:ems="10"
-        android:hint="Enter your weight (kg)"
+        android:hint="@string/enter_your_weight_kg"
         android:inputType="numberDecimal"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb"
-        android:layout_above="@+id/user_length"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="17dp" />
+        android:textColorHint="#cfd1cb" />
 
     <EditText
         android:id="@+id/user_length"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/user_age"
+        android:layout_alignParentStart="true"
         android:layout_gravity="end"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="#cfd1cb"
         android:ems="10"
-        android:hint="Enter your length"
+        android:hint="@string/enter_your_length"
         android:inputType="numberDecimal"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb"
-        android:layout_above="@+id/user_age"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp" />
+        android:textColorHint="#cfd1cb" />
 
     <EditText
         android:id="@+id/user_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/save_profile"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="end"
+        android:layout_marginBottom="29dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="#cfd1cb"
         android:ems="10"
-        android:hint="Enter your Age"
+        android:hint="@string/enter_your_age"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb"
-        android:layout_above="@+id/save_profile"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="29dp" />
+        android:textColorHint="#cfd1cb" />
 
     <Button
         android:id="@+id/save_profile"
         android:layout_width="100dp"
         android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="end"
         android:background="@drawable/text_view_shape"
-        android:text="Save"
+        android:text="@string/save_profile_btn"
         android:textAllCaps="false"
-        android:textColor="@color/cardview_light_background"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="@color/cardview_light_background" />
 
 
 </RelativeLayout>
