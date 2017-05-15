@@ -2,6 +2,7 @@
     <string name="app_name">Fatless</string>
     <string name="facebook_app_id">238466676604458</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="fb_login_protocol_scheme">fb238466676604458</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
