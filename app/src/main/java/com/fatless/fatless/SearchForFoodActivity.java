@@ -73,7 +73,7 @@ public class SearchForFoodActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    startActivity(new Intent(SearchForFoodActivity.this, MainActivity.class));
+                    startActivity(new Intent(SearchForFoodActivity.this, LoginActivity.class));
                     finish();
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }

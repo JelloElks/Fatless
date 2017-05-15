@@ -86,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 } else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
-                    startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                    startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
                     finish();
                 }
 
