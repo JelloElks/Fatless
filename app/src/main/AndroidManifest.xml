@@ -43,6 +43,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".SearchForFoodActivity" />
         <activity android:name=".FoodInformationActivity" />
+        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/the_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.fatless.fatless.Home"
+    tools:context="com.fatless.fatless.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
     <ImageButton
