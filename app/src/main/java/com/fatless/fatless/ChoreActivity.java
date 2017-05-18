@@ -31,9 +31,11 @@ public class ChoreActivity extends AppCompatActivity {
     TextView chore_info_view;
 
     private int energyKcal;
-
+    private String choreName;
+    private double metValue;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chore);
