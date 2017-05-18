@@ -128,7 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
                      */
                     // prepareForm(uid);
                     setProfilePhoto(uid);
-              //      startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                    startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
                 }
             });
 
