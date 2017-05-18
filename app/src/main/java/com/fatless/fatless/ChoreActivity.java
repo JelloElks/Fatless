@@ -30,8 +30,8 @@ public class ChoreActivity extends AppCompatActivity {
     @BindView(R2.id.chore_info_view)
     TextView chore_info_view;
 
-
     private int energyKcal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
