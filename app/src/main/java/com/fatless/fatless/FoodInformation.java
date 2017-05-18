@@ -19,6 +19,10 @@ class FoodInformation {
         this.sodium = sodium;
     }
 
+    FoodInformation() {
+
+    }
+
     @Override
     public String toString() {
         return "Food Information " +

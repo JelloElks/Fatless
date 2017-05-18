@@ -97,6 +97,13 @@ public class FoodInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                FoodInformation foodInformation = new FoodInformation();
+                foodInformation.setName(name);
+                foodInformation.setNumber(number);
+                
+                Intent intentForChore = new Intent(FoodInformationActivity.this, ChoreActivity.class);
+                intentForChore.putExtra("kcal", foodInformation.getEnergyKcal());
+                startActivity(intentForChore);
             }
         });
 
