@@ -9,6 +9,79 @@
     tools:context="com.fatless.fatless.HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
+    <ProgressBar
+        android:id="@+id/progressBarCircle"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="210dp"
+        android:layout_height="204dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/drawable_circle_dark_blue"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/drawable_circle_yellow"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/editTextMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewTime"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:hint="@string/hint_minute"
+        android:inputType="number"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:minEms="5"
+        android:text="1"
+        android:textColor="@color/colorYellow"
+        android:textColorHint="@color/colorYellow"
+        tools:layout_editor_absoluteY="189dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="00:01:00"
+        android:textColor="@color/colorYellow"
+        android:textSize="40sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageViewReset"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textViewTime"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/icon_reset"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageViewStartStop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/progressBarCircle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_start"
+        tools:layout_editor_absoluteY="290dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="130dp"
@@ -20,7 +93,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
         app:layout_constraintRight_toLeftOf="@+id/imageButton4"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.388"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarCircle" />
 
     <ImageButton
         android:id="@+id/toolMenu"
@@ -30,20 +106,20 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarCircle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064"
+        app:layout_constraintVertical_bias="0.615"
         app:srcCompat="@drawable/ic_009_like"
         app:layout_constraintRight_toLeftOf="@+id/imageButton3"
         android:layout_marginRight="8dp"
-        app:layout_constraintHorizontal_bias="0.391" />
+        app:layout_constraintHorizontal_bias="0.388" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="130dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="21dp"
         android:layout_marginRight="30dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
