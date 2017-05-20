@@ -6,7 +6,7 @@
 
     <!-- Timer -->
     <string name="hint_minute">Minute</string>
-    <string name="message_minutes">Please Enter Minutes...</string>
+    <string name="message_minutes">Please Enter Minutes…</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -20,7 +20,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="already_registerd_sign_in_here">Already registerd? Sign in here</string>
+    <string name="already_registered_sign_in_here">Already registered? Sign in here</string>
     <string name="password_requirement">Password must contain 1 uppercase char and a number and be 6 letters minimum</string>
     <string name="profile_picture">profilepicture</string>
     <string name="network_unavailable_message">Network is unavailable</string>
@@ -46,7 +46,7 @@
     <string name="enter_your_email">Enter your Email</string>
     <string name="enter_your_password">Enter your Password</string>
     <string name="register_btn">Register</string>
-    <string name="already_registerd_create_user">Already registerd? sign in here!</string>
+    <string name="already_registered_create_user">Already registered? Sign in here!</string>
     <string name="password_login_hint">Password</string>
     <string name="email_login_hint">Email</string>
     <string name="login_btn">Login</string>

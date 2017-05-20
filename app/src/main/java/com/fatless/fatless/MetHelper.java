@@ -1,33 +1,33 @@
 package com.fatless.fatless;
 
 
- class MetHelper {
+class MetHelper {
 
-    String activity;
-    double metLevel;
+    private String activity;
+    private double metLevel;
 
-   MetHelper(String activity, double metLevel) {
+    MetHelper(String activity, double metLevel) {
         this.activity = activity;
         this.metLevel = metLevel;
     }
 
-    public MetHelper() {
+    MetHelper() {
 
     }
 
-    public String getActivity() {
+    String getActivity() {
         return activity;
     }
 
-    public void setActivity(String activity) {
+    void setActivity(String activity) {
         this.activity = activity;
     }
 
-    public double getMetLevel() {
+    double getMetLevel() {
         return metLevel;
     }
 
-    public void setMetLevel(double metLevel) {
+    void setMetLevel(double metLevel) {
         this.metLevel = metLevel;
     }
 }
