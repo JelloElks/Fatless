@@ -5,6 +5,6 @@
     android:thickness="10dp"
     android:useLevel="false">
 
-    <solid android:color="@color/colorPrimaryDark" />
+    <solid android:color="@color/darkerTimer" />
 
 </shape>

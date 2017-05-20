@@ -16,6 +16,7 @@
     <color name="color8">#FFA000</color>
     <color name="the_background">#454752</color>
     <color name="fatlessText">#e4e3e1</color>
-    <color name="colorYellow">#F5FA55</color>
+    <color name="darkerTimer">#3c3e47</color>
+    <color name="colorYellow">#f0c500</color>
 
 </resources>
