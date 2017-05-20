@@ -93,19 +93,6 @@ public class FoodInformationActivity extends AppCompatActivity {
         food_name.setText(name);
         getFoodInformation(number);
 
-        pick_food_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                FoodInformation foodInformation = new FoodInformation();
-                foodInformation.setName(name);
-                foodInformation.setNumber(number);
-                
-                Intent intentForChore = new Intent(FoodInformationActivity.this, ChoreActivity.class);
-                intentForChore.putExtra("kcal", foodInformation.getEnergyKcal());
-                startActivity(intentForChore);
-            }
-        });
 
     }
 
@@ -125,7 +112,7 @@ public class FoodInformationActivity extends AppCompatActivity {
             int energyKcal = jss.getInt("energyKcal");
             int fat = jss.getInt("fat");
             int sodium = jss.getInt("sodium");
-            FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
+            final FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
             foodInformation.setName(name);
             foodInfoList.add(foodInformation);
 
@@ -135,6 +122,17 @@ public class FoodInformationActivity extends AppCompatActivity {
             protein_text_info.setText(String.format("Protein :  %s", String.valueOf(foodInformation.getProtein())));
             sodium_text_info.setText(String.format("Sodium :  %s", String.valueOf(foodInformation.getSodium())));
 
+
+            pick_food_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intentForChore = new Intent(FoodInformationActivity.this, ChoreActivity.class);
+                    intentForChore.putExtra("kcal", foodInformation.getEnergyKcal());
+                    startActivity(intentForChore);
+
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e(TAG, e.toString());
