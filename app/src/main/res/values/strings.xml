@@ -6,6 +6,7 @@
 
     <!-- Timer -->
     <string name="hint_minute">Minute</string>
+    <string name="message_minutes">Please Enter Minutes...</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
