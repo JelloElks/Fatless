@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
 
-    private static final String TAG = ChoreActivity.class.getName();
+    private static final String TAG = HomeActivity.class.getName();
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
