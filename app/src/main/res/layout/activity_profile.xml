@@ -49,7 +49,6 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:background="@drawable/image_profile_shape"
             android:contentDescription="@string/profile_picture"
             android:scaleType="fitCenter"
             android:src="@drawable/common_google_signin_btn_icon_light_normal" />
@@ -100,7 +99,9 @@
         android:hint="@string/enter_your_weight_kg"
         android:inputType="numberDecimal"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb" />
+        android:textColor="#cfd1cb"
+        android:textColorHint="#cfd1cb"
+        android:textColorLink="#cfd1cb" />
 
     <EditText
         android:id="@+id/user_length"
@@ -117,7 +118,9 @@
         android:hint="@string/enter_your_length"
         android:inputType="numberDecimal"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb" />
+        android:textColor="#cfd1cb"
+        android:textColorHint="#cfd1cb"
+        android:textColorLink="#cfd1cb" />
 
     <EditText
         android:id="@+id/user_age"
@@ -134,7 +137,9 @@
         android:hint="@string/enter_your_age"
         android:inputType="number"
         android:textAlignment="center"
-        android:textColorHint="#cfd1cb" />
+        android:textColor="#cfd1cb"
+        android:textColorHint="#cfd1cb"
+        android:textColorLink="#cfd1cb"/>
 
     <Button
         android:id="@+id/save_profile"

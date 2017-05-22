@@ -128,7 +128,7 @@
         app:layout_constraintBottom_toTopOf="@+id/progressBarCircle"
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageButton3"
+        app:layout_constraintRight_toLeftOf="@+id/searchFoodMenuButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.941"
         app:srcCompat="@drawable/ic_cutlery" />
@@ -148,7 +148,7 @@
         app:layout_constraintVertical_bias="0.375" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/searchFoodMenuButton"
         android:layout_width="130dp"
         android:layout_height="120dp"
         android:layout_marginRight="16dp"
