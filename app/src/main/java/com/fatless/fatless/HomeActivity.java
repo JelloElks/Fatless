@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity
@@ -51,6 +53,10 @@ public class HomeActivity extends AppCompatActivity
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
+
+    @BindView(R2.id.searchFoodMenuButton)
+    ImageButton searchFoodMenuButton;
+
     private int totalTime;
 
     @Override
@@ -103,6 +109,14 @@ public class HomeActivity extends AppCompatActivity
         initViews();
         // method call to initialize the listeners
         initListeners();
+
+        searchFoodMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(HomeActivity.this, SearchForFoodActivity.class));
+            }
+        });
 
     }
 

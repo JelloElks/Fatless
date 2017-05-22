@@ -130,7 +130,6 @@ public class ProfileActivity extends AppCompatActivity {
                     setProfilePhoto(uid);
                     startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
 
-                    onDestroy();
                 }
             });
 
