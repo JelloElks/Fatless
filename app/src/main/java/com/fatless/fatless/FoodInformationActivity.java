@@ -123,6 +123,9 @@ public class FoodInformationActivity extends AppCompatActivity {
             sodium_text_info.setText(String.format("Sodium :  %s", String.valueOf(foodInformation.getSodium())));
 
 
+            double kcalPerGram = energyKcal / 100;
+            foodInformation.setEnergyKcal(kcalPerGram);
+            
             pick_food_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

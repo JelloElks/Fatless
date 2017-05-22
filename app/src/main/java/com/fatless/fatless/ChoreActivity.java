@@ -5,9 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,11 +40,14 @@ public class ChoreActivity extends AppCompatActivity {
 
     @BindView(R2.id.chore_info_view)
     TextView chore_info_view;
+    @BindView(R2.id.amount_kcal_chore)
+    EditText amount_kcal_chore;
 
     private double energyKcal;
     private String choreName;
     private double metValue;
     private String uid;
+    private int totalTime;
 
     private ArrayList<MetHelper> metList;
 
@@ -73,6 +79,8 @@ public class ChoreActivity extends AppCompatActivity {
 
             }
         };
+        random_chore_button.setEnabled(false);
+        random_chore_button.setFocusable(false);
         metList = new ArrayList<>();
         metText();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -87,6 +95,9 @@ public class ChoreActivity extends AppCompatActivity {
         pick_chore_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intenForHome = new Intent(ChoreActivity.this, HomeActivity.class);
+                intenForHome.putExtra("totaltime", totalTime);
+                startActivity(intenForHome);
 
             }
         });
@@ -94,7 +105,34 @@ public class ChoreActivity extends AppCompatActivity {
         random_chore_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chore_info_view.setText(calculateChore(energyKcal, getUserWeight(uid)));
+                chore_info_view.setText(calculateChore(calculateAmountOfKcal(getAmountOfKcal()), getUserWeight(uid)));
+
+            }
+        });
+
+        amount_kcal_chore.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence text, int i, int i1, int i2) {
+                if (text.toString().equals("")) {
+                    random_chore_button.setEnabled(false);
+                } else {
+                    random_chore_button.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence text, int i, int i1, int i2) {
+
+                if (text.toString().equals("")) {
+                    random_chore_button.setEnabled(false);
+                } else {
+                    random_chore_button.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
@@ -108,7 +146,8 @@ public class ChoreActivity extends AppCompatActivity {
         return Double.parseDouble(strUserWeight);
     }
 
-    public String calculateChore(double calories, double kg) {
+
+    private String calculateChore(double calories, double kg) {
 
         Random random = new Random();
 
@@ -120,6 +159,7 @@ public class ChoreActivity extends AppCompatActivity {
         int minutes = (int) (h * 60) % 60;
         int seconds = (int) (h * (60 * 60)) % 60;
 
+        totalTime = hours + minutes + seconds;
         return ("You could " + metHelper.getActivity() + " for " + String.format("%s(h) %s(m) %s(s)", hours, minutes, seconds)
                 + "\nPress Random to randomize");
     }
@@ -149,6 +189,19 @@ public class ChoreActivity extends AppCompatActivity {
         }
     }
 
+
+    private double calculateAmountOfKcal(double amount) {
+
+        return amount * energyKcal;
+
+    }
+
+    private double getAmountOfKcal() {
+
+        String kcalInString = amount_kcal_chore.getText().toString();
+        return Double.parseDouble(kcalInString);
+
+    }
 
     @Override
     public void onStart() {

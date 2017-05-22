@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
-
+    private int totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +78,13 @@ public class HomeActivity extends AppCompatActivity
 
             }
         };
+
+        Intent intentGetTime = getIntent();
+
+        String g = intentGetTime.getStringExtra("totaltime");
+        totalTime = Integer.parseInt(g);
+        TextView textViewTime = (TextView) findViewById(R.id.textViewTime);
+        textViewTime.setText(totalTime);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
