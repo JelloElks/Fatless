@@ -109,7 +109,7 @@ public class FoodInformationActivity extends AppCompatActivity {
 
 
             int protein = jss.getInt("protein");
-            int energyKcal = jss.getInt("energyKcal");
+            double energyKcal = jss.getDouble("energyKcal");
             int fat = jss.getInt("fat");
             int sodium = jss.getInt("sodium");
             final FoodInformation foodInformation = new FoodInformation(number, protein, fat, energyKcal, sodium);
@@ -192,6 +192,10 @@ public class FoodInformationActivity extends AppCompatActivity {
         }
 
         return isAvailable;
+    }
+
+    private int calculateAmountOfKcal() {
+        return 2;
     }
 
     @Override

@@ -38,7 +38,7 @@ public class ChoreActivity extends AppCompatActivity {
     @BindView(R2.id.chore_info_view)
     TextView chore_info_view;
 
-    private int energyKcal;
+    private double energyKcal;
     private String choreName;
     private double metValue;
     private String uid;
@@ -82,7 +82,7 @@ public class ChoreActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        energyKcal = intent.getIntExtra("kcal", 0);
+        energyKcal = intent.getDoubleExtra("kcal", 0);
 
         pick_chore_button.setOnClickListener(new View.OnClickListener() {
             @Override

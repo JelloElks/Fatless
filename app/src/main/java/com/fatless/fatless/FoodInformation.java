@@ -7,11 +7,11 @@ class FoodInformation {
     private int number;
     private int protein;
     private int fat;
-    private int energyKcal;
+    private double energyKcal;
     private int sodium;
 
 
-    FoodInformation(int number, int protein, int fat, int energyKcal, int sodium) {
+    FoodInformation(int number, int protein, int fat, double energyKcal, int sodium) {
         this.number = number;
         this.protein = protein;
         this.fat = fat;
@@ -65,11 +65,11 @@ class FoodInformation {
         this.fat = fat;
     }
 
-    int getEnergyKcal() {
+    double getEnergyKcal() {
         return energyKcal;
     }
 
-    void setEnergyKcal(int energyKcal) {
+    void setEnergyKcal(double energyKcal) {
         this.energyKcal = energyKcal;
     }
 
