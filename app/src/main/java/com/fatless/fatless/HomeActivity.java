@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity
     private TimerStatus timerStatus = TimerStatus.STOPPED;
 
     private ProgressBar progressBarCircle;
-    private EditText editTextMinute;
+    // private EditText editTextMinute;
     private TextView textViewTime;
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
@@ -56,8 +56,10 @@ public class HomeActivity extends AppCompatActivity
 
     @BindView(R2.id.searchFoodMenuButton)
     ImageButton searchFoodMenuButton;
+    @BindView(R2.id.editTextMinute)
+    EditText editTextMinute;
 
-    private int totalTime;
+    private double totalTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,14 +86,8 @@ public class HomeActivity extends AppCompatActivity
 
             }
         };
-/*
-        Intent intentGetTime = getIntent();
 
-        String g = intentGetTime.getStringExtra("totaltime");
-        totalTime = Integer.parseInt(g);
-        TextView textViewTime = (TextView) findViewById(R.id.textViewTime);
-        textViewTime.setText(totalTime);
-*/
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -109,6 +105,8 @@ public class HomeActivity extends AppCompatActivity
         initViews();
         // method call to initialize the listeners
         initListeners();
+
+        getTimeFromChore();
 
         searchFoodMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +177,14 @@ public class HomeActivity extends AppCompatActivity
 
 
     // <---TIMER--->
+
+    private void getTimeFromChore() {
+        Intent intentGetTime = getIntent();
+
+        totalTime = intentGetTime.getDoubleExtra("totaltime", 2);
+        editTextMinute.setText(String.valueOf((int) totalTime + 0.5d));
+        startStop();
+    }
 
     private void initViews() {
         progressBarCircle = (ProgressBar) findViewById(R.id.progressBarCircle);

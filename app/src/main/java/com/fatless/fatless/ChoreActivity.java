@@ -47,7 +47,7 @@ public class ChoreActivity extends AppCompatActivity {
     private String choreName;
     private double metValue;
     private String uid;
-    private int totalTime;
+    private double totalTime;
 
     private ArrayList<MetHelper> metList;
 
@@ -159,7 +159,9 @@ public class ChoreActivity extends AppCompatActivity {
         int minutes = (int) (h * 60) % 60;
         int seconds = (int) (h * (60 * 60)) % 60;
 
-        totalTime = hours + minutes + seconds;
+        //  totalTime = hours + minutes + seconds;
+
+        totalTime = hours + ((h * 60) % 60) + (h * (60 * 60)) % 60;
         return ("You could " + metHelper.getActivity() + " for " + String.format("%s(h) %s(m) %s(s)", hours, minutes, seconds)
                 + "\nPress Random to randomize");
     }
